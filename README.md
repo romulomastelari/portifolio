@@ -1,115 +1,124 @@
-# Rômulo Mastelari Portfolio
+<h1 align="center">Meu Portfólio</h1>
 
-A modern, responsive portfolio website built with Angular 17.3, showcasing a front-end developer's skills and projects.
+<p align="center">
+  <img src="https://img.shields.io/github/last-commit/romulomastelari/portfolio" alt="GitHub last commit">
+  <img src="https://img.shields.io/github/repo-size/romulomastelari/portfolio" alt="GitHub repo size">
+  <img src="https://img.shields.io/github/languages/count/romulomastelari/portfolio" alt="GitHub language count">
+  <img src="https://img.shields.io/github/license/romulomastelari/portfolio" alt="GitHub license">
+</p>
 
-## Features
+<p align="center">
+  <img src="assets/img-portifilio.png" alt="Demonstração do Portfólio" width="600">
+</p>
 
-- **Modern Design**: Clean, elegant layout with generous spacing and readable typography
-- **Theme Switching**: Multiple color themes (Green, Blue, Red, and Dark mode)
-- **Responsive Layout**: Mobile-first approach with optimized views for all device sizes
-- **GitHub Integration**: Dynamically fetches and displays repositories
-- **Contact Form**: Includes form validation and success feedback
-- **Animations**: Subtle hover effects and smooth scrolling
+## 💻 Projeto
 
-## Technologies Used
+Um portfólio web moderno e responsivo construído com Angular 17.3, exibindo algumas das minhas habilidades e projetos como desenvolvedor front-end. O site apresenta um design limpo e elegante, com múltiplos temas de cores, integração com GitHub para exibir repositórios dinamicamente, formulário de contato com validação, além de animações sutis para melhorar a experiência do usuário.
 
-- Angular 17.3
-- TypeScript
-- SCSS with CSS Variables
-- GitHub API
-- Material Icons
+Meu portfólio digital das minhas habilidades técnicas e projetos, permitindo que recrutadores e outros desenvolvedores conheçam meu trabalho de forma interativa.
 
-## Project Structure
+**Demo:** [https://romulomastelari.github.io/portfolio](https://romulomastelari.github.io/portfolio)
 
-```
-src/
-├── app/
-│   ├── features/
-│   │   ├── about/
-│   │   ├── projects/
-│   │   └── contact/
-│   ├── services/
-│   │   └── theme.service.ts
-│   ├── shared/
-│   │   ├── header/
-│   │   ├── footer/
-│   │   └── theme-switcher/
-│   ├── app.component.ts
-│   ├── app.routes.ts
-│   └── app.config.ts
-├── assets/
-├── styles/
-│   └── variables.scss
-└── index.html
-```
+## 🧪 Tecnologias
 
-## Getting Started
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-### Prerequisites
+- [Angular 17.3](https://angular.io/) - Framework para construção de aplicações web
+- [TypeScript](https://www.typescriptlang.org/) - Superset tipado de JavaScript
+- [SCSS](https://sass-lang.com/) - Pré-processador CSS com variáveis
+- [GitHub API](https://docs.github.com/en/rest) - API para integração com GitHub
+- [FontAwesome](https://fontawesome.com/) - Biblioteca de ícones vetoriais
+- [Material Icons](https://material.io/resources/icons/) - Ícones do Material Design
 
-- Node.js (v16 or higher)
-- npm (v8 or higher)
+## 🚀 Como executar
 
-### Installation
+Para executar o projeto localmente, siga os passos abaixo:
 
-1. Clone the repository:
+### Pré-requisitos
+
+- Node.js (v16 ou superior)
+- npm (v8 ou superior)
+
+### Instalação
+
+1. Clone o repositório:
    ```bash
    git clone https://github.com/romulomastelari/portfolio.git
    cd portfolio
    ```
 
-2. Install dependencies:
+2. Instale as dependências:
    ```bash
    npm install
    ```
 
-### Development Server
+### Servidor de desenvolvimento
 
-Run the development server:
+Execute o servidor de desenvolvimento:
 
 ```bash
 npm start
 ```
 
-Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you change any of the source files.
+Navegue para `http://localhost:4200/` no seu navegador. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
 
-### Building for Production
+### Compilação para produção
 
-To build the project for production:
+Para compilar o projeto para produção:
 
 ```bash
 npm run build
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+Os artefatos de compilação serão armazenados no diretório `dist/`.
 
-## Customization
+## 📝 License
 
-### Themes
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
 
-The application includes four themes:
-- Light Green (default)
-- Light Blue
-- Light Red
-- Dark
+## 📓 Anotações pessoais
+- Componentes standalone do Angular 17.3
+- Organização em pastas features, shared e core
+- Comunicação entre componentes com inputs/outputs tipados
+- Componentes reutilizáveis (logo, skill-tags, cards)
+- Lazy loading em todas as rotas principais
+- Estratégia OnPush para otimização da detecção de mudanças
+- Otimização de assets e imagens
+- Implementação de trackBy para melhorar performance de listas
+- Sistema de temas com variáveis CSS e ThemeService
+- Persistência do tema escolhido via localStorage
+- Suporte para 3 idiomas (PT, EN, ES) com detecção automática
+- Pipe personalizado para traduções nos templates
+- Integração com GitHub API para mostrar perfil e repositórios
+- Sistema de cache para reduzir requisições à API
+- Formulário de contato com validações
+- Design responsivo mobile-first
 
-Themes are implemented using CSS custom properties (variables) and can be easily modified in `src/styles/variables.scss`.
+### Arquitetura
 
-### Content
+O projeto segue uma arquitetura modular com componentes standalone do Angular 17.3, aproveitando as vantagens da nova sintaxe e recursos:
 
-To customize the content:
-- Update personal information in the About component
-- Add your GitHub username in the Projects service to fetch your repositories
-- Update contact information in the Contact component
+- **Lazy Loading**: Implementado para carregar módulos sob demanda, melhorando o tempo de carregamento inicial.
+- **Serviços**: Utilização de serviços para gerenciar estado (ThemeService) e comunicação com APIs (GitHubService).
+- **Pipes**: Criação de pipes personalizados para tradução e formatação de dados.
 
-## Browser Support
+### Performance
 
-The portfolio is compatible with:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- Implementação de estratégias de detecção de mudanças OnPush para componentes que não precisam de verificação constante.
+- Uso de trackBy nas diretivas ngFor para melhorar a performance de listas.
+- Otimização de imagens e assets para carregamento rápido.
 
-## License
+### Dicas de Desenvolvimento
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Para adicionar novos temas, basta estender as variáveis CSS em `src/styles/variables.scss`.
+- A estrutura de componentes permite fácil extensão para novas seções ou funcionalidades.
+- O sistema de tradução pode ser expandido adicionando novos idiomas no serviço de linguagem.
+
+---
+
+<p align="center">
+  Feito com ❤️ por <a href="https://github.com/romulomastelari">Rômulo Mastelari</a>
+</p>
+<p align="center">
+  "Transformando linhas de código em experiências memoráveis"
+</p>
