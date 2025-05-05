@@ -1,0 +1,22 @@
+<div class="language-switcher">
+    <button
+            class="language-toggle"
+            (click)="toggleDropdown()"
+            aria-label="Toggle language menu"
+    >
+        <span class="flag">{{ getCurrentLanguageFlag() }}</span>
+        <span class="language-name">{{ getCurrentLanguageName() }}</span>
+    </button>
+
+    <div class="language-dropdown" [class.open]="isOpen">
+        <div
+                *ngFor="let language of languages"
+                class="language-option"
+                [class.active]="currentLanguage === language.id"
+                (click)="setLanguage(language.id)"
+        >
+            <span class="flag">{{ language.flag }}</span>
+            <span>{{ language.name }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <app-logo (click)="closeMenu()"></app-logo>
+
+            <button
+                    class="menu-toggle"
+                    [class.active]="isMenuOpen"
+                    (click)="toggleMenu()"
+                    *ngIf="isMobileView"
+                    aria-label="Toggle menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" [class.open]="isMenuOpen">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a
+                                routerLink="/about"
+                                routerLinkActive="active"
+                                (click)="closeMenu()"
+                        >
+                            {{ translate('about') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                routerLink="/projects"
+                                routerLinkActive="active"
+                                (click)="closeMenu()"
+                        >
+                            {{ translate('projects') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                routerLink="/contact"
+                                routerLinkActive="active"
+                                (click)="closeMenu()"
+                        >
+                            {{ translate('contact') }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="social-dropdown" *ngIf="!isMobileView || isMenuOpen" [class.hidden]="isMenuOpen && isMobileView">
+                <button
+                        class="social-toggle"
+                        (click)="toggleSocialMenu()"
+                        aria-label="Toggle social menu"
+                >
+                    <i class="material-icons">share</i>
+                    <span>{{ translate('social') }}</span>
+                </button>
+
+                <div class="social-menu" [class.open]="isSocialMenuOpen">
+                    <a
+                            *ngFor="let link of socialLinks"
+                            [href]="link.url"
+                            target="_blank"
+                            rel="noopener"
+                            [attr.aria-label]="link.name"
+                            (click)="closeSocialMenu()"
+                    >
+                        <fa-icon [icon]="link.icon"></fa-icon>
+                        <span>{{ link.name }}</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="switchers-container" *ngIf="!isMobileView || isMenuOpen">
+                <app-theme-switcher></app-theme-switcher>
+                <app-language-switcher></app-language-switcher>
+            </div>
+        </div>
+    </div>
+</header>

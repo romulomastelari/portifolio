@@ -1,0 +1,12 @@
+<app-header></app-header>
+<main class="main-content">
+    <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>
+
+<div class="back-to-top"
+     [class.visible]="showBackToTop"
+     (click)="scrollToTop()"
+     aria-label="Back to top">
+    <span class="material-icons">arrow_upward</span>
+</div>

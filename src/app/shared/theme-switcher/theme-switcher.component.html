@@ -1,0 +1,29 @@
+<div class="theme-switcher">
+    <button
+            class="theme-toggle"
+            (click)="toggleDropdown()"
+            aria-label="Toggle theme menu"
+    >
+        <i class="material-icons">{{ getCurrentThemeIcon() }}</i>
+        <span class="theme-name">{{ getCurrentThemeName() }}</span>
+    </button>
+
+    <div class="theme-dropdown" [class.open]="isOpen">
+        <div
+                *ngFor="let theme of themes"
+                class="theme-option"
+                [class.active]="currentTheme === theme.id"
+                (click)="setTheme(theme.id)"
+        >
+            <i
+                    class="material-icons"
+                    [style.color]="theme.id === 'light-green' ? '#2c4838' :
+                      theme.id === 'light-blue' ? '#ADD8E6' : 
+                      theme.id === 'light-red' ? '#FF0000' : ''"
+            >
+                {{ theme.icon }}
+            </i>
+            <span>{{ theme.translateKey | translate }}</span>
+        </div>
+    </div>
+</div>

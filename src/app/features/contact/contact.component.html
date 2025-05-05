@@ -1,0 +1,126 @@
+<section class="contact section">
+    <div class="container">
+        <h2 class="section-title">{{ 'ContactMe' | translate }}</h2>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>{{ 'getInTouch' | translate }}</h3>
+                <p>{{ 'feelFree' | translate }}</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="material-icons">phone</i>
+                        <div>
+                            <h4>{{ 'phone' | translate }}</h4>
+                            <p>+55 (14) 99657-1886</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="material-icons">location_on</i>
+                        <div>
+                            <h4>{{'location' | translate}}</h4>
+                            <p>Bauru, São Paulo, Brazil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/romulomastelari" target="_blank" rel="noopener" aria-label="GitHub">
+                        <fa-icon [icon]="faGithub"></fa-icon>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/romulomastelari" target="_blank" rel="noopener"
+                       aria-label="LinkedIn">
+                        <fa-icon [icon]="faLinkedin"></fa-icon>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://instagram.com/romulomastelari" target="_blank" rel="noopener"
+                       aria-label="Instagram">
+                        <fa-icon [icon]="faInstagram"></fa-icon>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://instagram.com/romulomastelari" target="_blank" rel="noopener"
+                       aria-label="Whatsapp">
+                        <fa-icon [icon]="faWhatsapp"></fa-icon>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+
+                <div class="resume-download">
+                    <a href="assets/Romulo_Mastelari_Curriculo.pdf" download class="btn">
+                        <i class="material-icons">download</i>
+                        {{'downloadCV' | translate }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>{{'SendAsMessage' | translate}}</h3>
+                <div class="success-message" *ngIf="success">
+                    <i class="material-icons">check_circle</i>
+                    <p>{{ "yourMessageSent" | translate}}!</p>
+                </div>
+
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+                    <div class="form-group">
+                        <label for="name">{{ 'name' | translate }}</label>
+                        <input
+                                type="text"
+                                id="name"
+                                formControlName="name"
+                                [class.invalid]="isFieldInvalid('name')"
+                        >
+                        <div class="error-message" *ngIf="isFieldInvalid('name')">
+                            <span *ngIf="contactForm.get('name')?.errors?.['required']">{{ 'nameIsRequired' | translate}}</span>
+                            <span *ngIf="contactForm.get('name')?.errors?.['minlength']">{{ 'nameMust' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">{{ 'email' | translate}}</label>
+                        <input
+                                type="email"
+                                id="email"
+                                formControlName="email"
+                                [class.invalid]="isFieldInvalid('email')"
+                        >
+                        <div class="error-message" *ngIf="isFieldInvalid('email')">
+                            <span *ngIf="contactForm.get('email')?.errors?.['required']">{{ 'emailIsRequired' | translate }}</span>
+                            <span *ngIf="contactForm.get('email')?.errors?.['email']">{{ 'emailMust' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">{{ 'subject' | translate }}</label>
+                        <input
+                                type="text"
+                                id="subject"
+                                formControlName="subject"
+                                [class.invalid]="isFieldInvalid('subject')"
+                        >
+                        <div class="error-message" *ngIf="isFieldInvalid('subject')">
+                            <span *ngIf="contactForm.get('subject')?.errors?.['required']">{{ 'subjectIsRequired' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">{{ 'message' | translate }}</label>
+                        <textarea
+                                id="message"
+                                formControlName="message"
+                                rows="5"
+                                [class.invalid]="isFieldInvalid('message')"
+                        ></textarea>
+                        <div class="error-message" *ngIf="isFieldInvalid('message')">
+                            <span *ngIf="contactForm.get('message')?.errors?.['required']">{{ 'messageIsRequired' | translate }}</span>
+                            <span *ngIf="contactForm.get('message')?.errors?.['minlength']">{{ 'messageMust' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">{{'SendAsMessage' | translate}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

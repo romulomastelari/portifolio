@@ -1,0 +1,31 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column nav-links">
+                <nav>
+                    <ul>
+                        <li *ngFor="let link of navLinks">
+                            <a [routerLink]="link.path" routerLinkActive="active">{{ translate(link.label) }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-column social-links">
+                <div class="social-icons">
+                    <a *ngFor="let social of socialLinks"
+                       [href]="social.url"
+                       target="_blank"
+                       rel="noopener"
+                       [attr.aria-label]="social.label">
+                        <fa-icon [icon]="social.icon"></fa-icon>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column copyright">
+                <p>&copy; {{ currentYear }} {{ authorName }}</p>
+            </div>
+        </div>
+    </div>
+</footer>

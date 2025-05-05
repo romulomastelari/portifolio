@@ -1,0 +1,55 @@
+<section class="about section">
+    <div class="container">
+        <h2 class="section-title">{{ translate('aboutMe') }}</h2>
+
+        <div class="about-content">
+            <div class="loading-state" *ngIf="loading">
+                <div class="spinner"></div>
+                <p>{{ translate('loading') }}</p>
+            </div>
+
+            <ng-container *ngIf="!loading">
+                <div class="about-image">
+                    <img
+                            [src]="userProfile?.avatar_url || 'assets/profile.jpg'"
+                            [alt]="userProfile?.name || 'Rômulo Mastelari'"
+                    />
+                </div>
+
+                <div class="about-text">
+                    <h3>{{ userProfile?.name || 'Rômulo Mastelari' }}</h3>
+                    <h4>{{ translate('frontEndDeveloper') }}</h4>
+
+                    <p *ngIf="userProfile?.bio">
+                        {{ userProfile?.bio }}
+                    </p>
+
+                    <p *ngIf="!userProfile?.bio">
+                        {{ translate('defaultBio') }}
+                    </p>
+
+                    <p>
+                        {{ translate('codePhilosophy') }}
+                        <a href="assets/Romulo_Mastelari_Curriculo.pdf" download
+                           class="cv-link">{{ translate('downloadResume') }}</a> {{ translate('forMoreDetails') }}.
+                    </p>
+
+                    <div class="skills">
+                        <h4>{{ translate('skills') }}</h4>
+                        <ul class="skills-list">
+                            <li *ngFor="let skill of skills" class="skill-item">{{ skill }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="skills">
+                        <h4>Soft Skills</h4>
+                        <ul class="skills-list">
+                            <li *ngFor="let softSkill of softSkills" class="skill-item">{{ translate(softSkill) }}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

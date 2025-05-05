@@ -1,0 +1,75 @@
+<section class="projects section">
+    <div class="container">
+        <h2 class="section-title">{{ 'myProjects' | translate }}</h2>
+
+        <div class="projects-content">
+            <div class="loading-state" *ngIf="loading">
+                <div class="spinner"></div>
+                <p>{{ 'loadingProjects' | translate }}</p>
+            </div>
+
+            <div class="error-state" *ngIf="error && !loading">
+                <p>{{ 'errorLoadingProjects' | translate }}</p>
+                <button class="btn" (click)="retryLoading()">{{ 'tryAgain' | translate }}</button>
+            </div>
+            <div class="projects-filters" *ngIf="!loading && !error && allProjects.length > 0">
+                <div class="search-box">
+                    <input
+                            type="text"
+                            placeholder="{{ 'searchProjects' | translate }}"
+                            [(ngModel)]="searchTerm"
+                            (input)="onSearch()"
+                    >
+                    <i class="material-icons">search</i>
+                </div>
+
+                <div class="filter-box">
+                    <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+                        <option value="">{{ 'allLinguages' | translate }}</option>
+                        <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+                    </select>
+                </div>
+
+                <button
+                        class="clear-filters"
+                        (click)="clearFilters()"
+                        *ngIf="searchTerm || selectedLanguage"
+                >
+                    <i class="material-icons">clear</i> {{ 'clearFilters' | translate }}
+                </button>
+            </div>
+
+            <div class="empty-state" *ngIf="!loading && !error && projects.length === 0">
+                <p>{{ 'noProjectsFound' | translate }}</p>
+                <button class="btn" (click)="clearFilters()" *ngIf="searchTerm || selectedLanguage">Clear Filters
+                </button>
+            </div>
+
+            <div class="projects-grid" *ngIf="!loading && !error && projects.length > 0">
+                <div class="project-card" *ngFor="let project of projects" #projectCard>
+                    <div class="project-header">
+                        <h3 class="project-title">{{ project.name }}</h3>
+                        <span class="project-language" [ngClass]="getLanguageClass(project.language)">
+              {{ project.language || 'Unknown' }}
+            </span>
+                    </div>
+
+                    <p class="project-description">
+                        {{ project.description || 'No description available.' }}
+                    </p>
+
+                    <div class="project-footer">
+                        <a [href]="project.html_url" target="_blank" rel="noopener" class="btn">
+                            View on GitHub
+                        </a>
+
+                        <a *ngIf="project.homepage" [href]="project.homepage" target="_blank" rel="noopener"
+                           class="btn btn-secondary">
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+@import '../styles/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 60px;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: $z-index-fixed;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &:hover {
+    background-color: var(--primary-color-dark);
+  }
+
+  .material-icons {
+    font-size: 24px;
+  }
+}
