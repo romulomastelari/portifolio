@@ -7,12 +7,14 @@
   <img src="https://img.shields.io/github/license/romulomastelari/portfolio" alt="GitHub license">
 </p>
 
+<h3 align="center">Vídeo prévio da aplicação</h3>
 <p align="center">
   <img 
-    src="https://raw.githubusercontent.com/romulomastelari/portifolio/master/src/assets/Rômulo-Mastelari-Portifolio.gif" 
+    src="src/assets/Rômulo-Mastelari-Portifolio.gif" 
     alt="Prévia do projeto" 
   />
 </p>
+
 
 ## 💻 Projeto
 
