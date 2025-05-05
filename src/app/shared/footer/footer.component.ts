@@ -26,7 +26,7 @@ export class FooterComponent implements OnInit, OnDestroy {
   ];
 
   socialLinks = [
-    { url: 'https://linkedin.com/in/romulomastelari/', icon: faLinkedin, label: 'LinkedIn' },
+    { url: 'https://linkedin.com/in/romulo-mastelari/', icon: faLinkedin, label: 'LinkedIn' },
     { url: 'https://github.com/romulomastelari', icon: faGithub, label: 'GitHub' },
     { url: 'https://www.instagram.com/romulomastelari', icon: faInstagram, label: 'Instagram' },
     { url: 'https://api.whatsapp.com/send/?phone=5514996571886&text=Ol%C3%A1%2C+como+vai%3F%0APodemos+conversar+um+pouco...&type=phone_number&app_absent=0', icon: faWhatsapp, label: 'Whatsapp' }
