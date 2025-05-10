@@ -15,7 +15,36 @@
                 <span></span>
             </button>
 
-            <nav class="nav" [class.open]="isMenuOpen">
+            <nav class="nav" *ngIf="!isMobileView">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a
+                                routerLink="/about"
+                                routerLinkActive="active"
+                        >
+                            {{ translate('about') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                routerLink="/projects"
+                                routerLinkActive="active"
+                        >
+                            {{ translate('projects') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                routerLink="/contact"
+                                routerLinkActive="active"
+                        >
+                            {{ translate('contact') }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav mobile-nav" [class.open]="isMenuOpen" *ngIf="isMobileView">
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a
@@ -44,10 +73,16 @@
                             {{ translate('contact') }}
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <app-theme-switcher></app-theme-switcher>
+                    </li>
+                    <li class="nav-item">
+                        <app-language-switcher></app-language-switcher>
+                    </li>
                 </ul>
             </nav>
 
-            <div class="social-dropdown" *ngIf="!isMobileView || isMenuOpen" [class.hidden]="isMenuOpen && isMobileView">
+            <div class="social-dropdown" *ngIf="!isMobileView">
                 <button
                         class="social-toggle"
                         (click)="toggleSocialMenu()"
@@ -72,7 +107,7 @@
                 </div>
             </div>
 
-            <div class="switchers-container" *ngIf="!isMobileView || isMenuOpen">
+            <div class="switchers-container" *ngIf="!isMobileView">
                 <app-theme-switcher></app-theme-switcher>
                 <app-language-switcher></app-language-switcher>
             </div>

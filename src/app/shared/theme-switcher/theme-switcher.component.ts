@@ -1,13 +1,13 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ThemeService, Theme} from '../../services/theme.service';
-import {LanguageService} from "../../services/language.service";
+import {Theme, ThemeService} from '../../services/theme.service';
 import {TranslatePipe} from "../../pipes/translate.pipe";
 
 @Component({
     selector: 'app-theme-switcher',
     standalone: true,
     imports: [CommonModule, TranslatePipe],
+    providers: [TranslatePipe],
     templateUrl: './theme-switcher.component.html',
     styleUrls: ['./theme-switcher.component.scss']
 })
@@ -22,7 +22,9 @@ export class ThemeSwitcherComponent implements OnInit {
 
     isOpen = false;
 
-    constructor(private themeService: ThemeService, private languageService: LanguageService) {
+    private translatePipe = inject(TranslatePipe);
+
+    constructor(private themeService: ThemeService) {
     }
 
     @HostListener('document:click', ['$event'])
@@ -60,10 +62,6 @@ export class ThemeSwitcherComponent implements OnInit {
 
     getCurrentThemeName(): string {
         const theme = this.themes.find(t => t.id === this.currentTheme);
-        return theme ? this.translate(theme.translateKey) : this.translate('theme');
-    }
-
-    translate(key: string): string {
-        return this.languageService.translate(key);
+        return theme ? this.translatePipe.transform(theme.translateKey) : this.translatePipe.transform('theme');
     }
 }

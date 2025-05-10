@@ -1,68 +1,71 @@
-<section class="about section">
-    <div class="container">
-        <h2 class="section-title">{{ 'aboutMe' | translate }}</h2>
+<div class="about-page">
+    <section class="about section">
+        <div class="container">
+            <h2 class="section-title">{{ 'aboutMe' | translate }}</h2>
 
-        <div class="about-content">
-            <div class="loading-state" *ngIf="loading">
-                <div class="spinner"></div>
-                <p>{{ 'loading' | translate }}</p>
+            <div class="about-content">
+                <div class="loading-state" *ngIf="loading">
+                    <div class="spinner"></div>
+                    <p>{{ 'loading' | translate }}</p>
+                </div>
+
+                <ng-container *ngIf="!loading">
+                    <div class="about-image">
+                        <img
+                                src="assets/minha_img.jpg"
+                                alt="Meu Avatar"
+                                class="profile-avatar"
+                        />
+                    </div>
+
+                    <div class="about-text">
+                        <h3>{{ userProfile?.name || 'Rômulo Mastelari' }}</h3>
+                        <h4>{{ 'frontEndDeveloper' | translate }}</h4>
+
+                        <p *ngIf="userProfile?.bio">
+                            {{ userProfile?.bio }}
+                        </p>
+
+                        <p *ngIf="!userProfile?.bio">
+                            {{ 'defaultBio' | translate }}
+                        </p>
+
+                        <p>
+                            {{ 'codePhilosophy' | translate }}
+                            <a href="assets/Romulo_Mastelari_Curriculo.pdf" download
+                               class="cv-link">{{ 'downloadResume' | translate }}</a> {{ 'forMoreDetails' | translate }}.
+                        </p>
+
+                        <div class="skills">
+                            <h4>{{ 'skills' | translate }}</h4>
+                            <ul class="skills-list">
+                                <li *ngFor="let skill of skills">
+                                    <app-tag-with-popover 
+                                        [text]="skill.name"
+                                        [icon]="skill.icon"
+                                        [proficiency]="skill.proficiency"
+                                        [level]="skill.level ?? ''">
+                                    </app-tag-with-popover>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="skills">
+                            <h4>Soft Skills</h4>
+                            <ul class="skills-list">
+                                <li *ngFor="let skill of softSkills">
+                                    <app-tag-with-popover 
+                                        [text]="translate(skill.name)"
+                                        [icon]="skill.icon"
+                                        [proficiency]="skill.proficiency"
+                                        [level]="skill.level ?? ''">
+                                    </app-tag-with-popover>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </ng-container>
             </div>
-
-            <ng-container *ngIf="!loading">
-                <div class="about-image">
-                    <img
-                            [src]="userProfile?.avatar_url || 'assets/profile.jpg'"
-                            [alt]="userProfile?.name || 'Rômulo Mastelari'"
-                    />
-                </div>
-
-                <div class="about-text">
-                    <h3>{{ userProfile?.name || 'Rômulo Mastelari' }}</h3>
-                    <h4>{{ 'frontEndDeveloper' | translate }}</h4>
-
-                    <p *ngIf="userProfile?.bio">
-                        {{ userProfile?.bio }}
-                    </p>
-
-                    <p *ngIf="!userProfile?.bio">
-                        {{ 'defaultBio' | translate }}
-                    </p>
-
-                    <p>
-                        {{ 'codePhilosophy' | translate }}
-                        <a href="assets/Romulo_Mastelari_Curriculo.pdf" download
-                           class="cv-link">{{ 'downloadResume' | translate }}</a> {{ 'forMoreDetails' | translate }}.
-                    </p>
-
-                    <div class="skills">
-                        <h4>{{ 'skills' | translate }}</h4>
-                        <ul class="skills-list">
-                            <li *ngFor="let skill of skills">
-                                <app-tag-with-popover 
-                                    [text]="skill.name"
-                                    [icon]="skill.icon"
-                                    [proficiency]="skill.proficiency"
-                                    [level]="skill.level ?? ''">
-                                </app-tag-with-popover>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="skills">
-                        <h4>Soft Skills</h4>
-                        <ul class="skills-list">
-                            <li *ngFor="let skill of softSkills">
-                                <app-tag-with-popover 
-                                    [text]="translate(skill.name)"
-                                    [icon]="skill.icon"
-                                    [proficiency]="skill.proficiency"
-                                    [level]="skill.level ?? ''">
-                                </app-tag-with-popover>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </ng-container>
         </div>
-    </div>
-</section>
+    </section>
+</div>

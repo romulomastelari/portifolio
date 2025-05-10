@@ -3,9 +3,9 @@
 .skill-tag {
   background-color: var(--bg-color-secondary);
   color: var(--primary-color);
-  padding: $spacing-sm $spacing-md;
+  padding: clamp(0.25rem, 1vw, $spacing-sm) clamp(0.5rem, 2vw, $spacing-md);
   border-radius: 20px;
-  font-size: $font-size-sm;
+  font-size: clamp(0.75rem, 2vw, $font-size-sm);
   border: 1px solid var(--primary-color);
   display: flex;
   align-items: center;
@@ -15,6 +15,12 @@
     background-color 0.3s ease,
     color 0.3s ease,
     transform 0.2s ease;
+  min-height: 32px;
+  text-align: center;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 
   &:hover {
     background-color: var(--primary-color);
@@ -23,7 +29,19 @@
   }
 
   fa-icon {
-    font-size: $font-size-sm;
+    font-size: clamp(0.75rem, 2vw, $font-size-sm);
+    flex-shrink: 0;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 320px) {
+    min-height: 28px;
+    padding: 0.25rem 0.5rem;
   }
 }
 
@@ -37,11 +55,24 @@
     opacity 0.3s ease,
     transform 0.3s ease,
     visibility 0s linear 0.3s;
-  
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: max-content;
+  max-width: 90vw;
+
+  @media (max-width: 425px) {
+    left: 0;
+    transform: translateY(10px);
+
+    &.show {
+      transform: translateY(0);
+    }
+  }
+
   &.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     transition: 
       opacity 0.3s ease,
       transform 0.3s ease,
@@ -56,7 +87,15 @@
   padding: $spacing-md;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-width: 200px;
+  max-width: 100%;
   margin-top: 8px;
+  max-height: 60vh;
+  overflow-y: auto;
+
+  @media (max-width: 425px) {
+    min-width: 150px;
+    padding: $spacing-sm;
+  }
 
   .popover-title {
     color: var(--primary-color);
@@ -68,7 +107,7 @@
     transition: 
       opacity 0.3s ease 0.1s,
       transform 0.3s ease 0.1s;
-    
+
     .show & {
       opacity: 1;
       transform: translateY(0);
@@ -87,7 +126,7 @@
     transition: 
       opacity 0.3s ease 0.2s,
       transform 0.3s ease 0.2s;
-    
+
     .show & {
       opacity: 1;
       transform: scaleX(1);
@@ -110,7 +149,7 @@
     transition: 
       opacity 0.3s ease 0.3s,
       transform 0.3s ease 0.3s;
-    
+
     .show & {
       opacity: 1;
       transform: translateY(0);
