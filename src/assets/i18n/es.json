@@ -31,8 +31,8 @@
   "allRightsReserved": "Todos los derechos reservados",
 
   "loading": "Cargando perfil...",
-  "frontEndDeveloper": "Desarrollador Front-End",
-  "defaultBio": "Soy un Desarrollador Front-End apasionado con varios años de experiencia en la creación de aplicaciones web modernas y responsivas. Mi experiencia incluye Angular, TypeScript y DevExtreme.",
+  "frontEndDeveloper": "Desarrollador Front-End enfocado en Angular",
+  "defaultBio": "Después de 10 años de trabajar en ollas y sartenes, cambié la cocina por Angular y, desde hace más de 4 años, he estado entregando SPA robustas con Angular+, JavaScript, TypeScript, CSS y HTML, Docker y CI/CD: rendimiento y usabilidad.",
   "codePhilosophy": "Me enfoco en escribir código limpio y mantenible, creando interfaces intuitivas que proporcionan excelentes experiencias de usuario en todos los dispositivos.",
   "downloadResume": "Descargar mi currículum",
   "forMoreDetails": "para más detalles",
@@ -64,5 +64,11 @@
   "emailMust": "El email debe ser una dirección de correo electrónico válida",
   "messageIsRequired": "El mensaje es obligatorio",
   "messageMust": "El mensaje debe tener al menos 10 caracteres",
-  "subjectIsRequired": "El asunto es obligatorio"
+  "subjectIsRequired": "El asunto es obligatorio",
+
+  "proficiency": "Dominio",
+  "basicLevel": "Básico",
+  "intermediateLevel": "Intermedio",
+  "advancedLevel": "Avanzado",
+  "expertLevel": "Experto"
 }

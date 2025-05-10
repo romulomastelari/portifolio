@@ -1,0 +1,131 @@
+@import '../../../../styles/variables';
+
+.skill-tag {
+  background-color: var(--bg-color-secondary);
+  color: var(--primary-color);
+  padding: $spacing-sm $spacing-md;
+  border-radius: 20px;
+  font-size: $font-size-sm;
+  border: 1px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+  }
+
+  fa-icon {
+    font-size: $font-size-sm;
+  }
+}
+
+.skill-popover {
+  position: absolute;
+  z-index: $z-index-popover;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: 
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0s linear 0s;
+  }
+}
+
+.popover-content {
+  background-color: var(--bg-color-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: $spacing-md;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  margin-top: 8px;
+
+  .popover-title {
+    color: var(--primary-color);
+    margin: 0 0 $spacing-sm;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: 
+      opacity 0.3s ease 0.1s,
+      transform 0.3s ease 0.1s;
+    
+    .show & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .progress-container {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    margin-bottom: $spacing-sm;
+    overflow: hidden;
+    opacity: 0;
+    transform: scaleX(0.9);
+    transform-origin: left;
+    transition: 
+      opacity 0.3s ease 0.2s,
+      transform 0.3s ease 0.2s;
+    
+    .show & {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: width 0.5s ease-out;
+  }
+
+  .proficiency-text {
+    color: var(--text-color);
+    font-size: $font-size-sm;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: 
+      opacity 0.3s ease 0.3s,
+      transform 0.3s ease 0.3s;
+    
+    .show & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+body.dark {
+  .skill-popover .popover-content {
+    background-color: var(--bg-color-secondary);
+    border-color: var(--border-color);
+  }
+}

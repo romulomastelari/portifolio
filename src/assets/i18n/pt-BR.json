@@ -31,10 +31,10 @@
   "allRightsReserved": "Todos os direitos reservados",
 
   "loading": "Carregando perfil...",
-  "frontEndDeveloper": "Desenvolvedor Front-End",
-  "defaultBio": "Sou um Desenvolvedor Front-End apaixonado com vários anos de experiência na criação de aplicações web modernas e responsivas. Minha especialidade inclui Angular, TypeScript e DevExtreme.",
+  "frontEndDeveloper": "Desenvolvedor Front-End Focado em Angular",
+  "defaultBio": "Depois de 10 anos virando panelas, troquei a cozinha por Angular e, há mais de 4 anos, entrego SPAs robustas com Angular+, JavaScript, TypeScript, CSS e HTML, Docker & CI/CD — desempenho e usabilidade.",
   "codePhilosophy": "Foco em escrever código limpo e de fácil manutenção, criando interfaces intuitivas que proporcionam excelentes experiências de usuário em todos os dispositivos.",
-  "downloadResume": "Baixar meu currículo",
+  "downloadResume": "Dá uma olhada no meu currículo",
   "forMoreDetails": "para mais detalhes",
 
   "myProjects": "Meus Projetos",
@@ -66,8 +66,9 @@
   "messageMust": "Mensagem deve ter pelo menos 10 caracteres",
   "subjectIsRequired": "Assunto é obrigatório",
 
-  "blackTheme": "Black",
-  "redTheme": "Red",
-  "blueTheme": "Blue",
-  "greenTheme": "Green"
+  "proficiency": "Proficiência",
+  "basicLevel": "Básico",
+  "intermediateLevel": "Intermediário",
+  "advancedLevel": "Avançado",
+  "expertLevel": "Especialista"
 }

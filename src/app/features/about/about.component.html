@@ -1,11 +1,11 @@
 <section class="about section">
     <div class="container">
-        <h2 class="section-title">{{ translate('aboutMe') }}</h2>
+        <h2 class="section-title">{{ 'aboutMe' | translate }}</h2>
 
         <div class="about-content">
             <div class="loading-state" *ngIf="loading">
                 <div class="spinner"></div>
-                <p>{{ translate('loading') }}</p>
+                <p>{{ 'loading' | translate }}</p>
             </div>
 
             <ng-container *ngIf="!loading">
@@ -18,36 +18,49 @@
 
                 <div class="about-text">
                     <h3>{{ userProfile?.name || 'Rômulo Mastelari' }}</h3>
-                    <h4>{{ translate('frontEndDeveloper') }}</h4>
+                    <h4>{{ 'frontEndDeveloper' | translate }}</h4>
 
                     <p *ngIf="userProfile?.bio">
                         {{ userProfile?.bio }}
                     </p>
 
                     <p *ngIf="!userProfile?.bio">
-                        {{ translate('defaultBio') }}
+                        {{ 'defaultBio' | translate }}
                     </p>
 
                     <p>
-                        {{ translate('codePhilosophy') }}
+                        {{ 'codePhilosophy' | translate }}
                         <a href="assets/Romulo_Mastelari_Curriculo.pdf" download
-                           class="cv-link">{{ translate('downloadResume') }}</a> {{ translate('forMoreDetails') }}.
+                           class="cv-link">{{ 'downloadResume' | translate }}</a> {{ 'forMoreDetails' | translate }}.
                     </p>
 
                     <div class="skills">
-                        <h4>{{ translate('skills') }}</h4>
+                        <h4>{{ 'skills' | translate }}</h4>
                         <ul class="skills-list">
-                            <li *ngFor="let skill of skills" class="skill-item">{{ skill }}</li>
+                            <li *ngFor="let skill of skills">
+                                <app-tag-with-popover 
+                                    [text]="skill.name"
+                                    [icon]="skill.icon"
+                                    [proficiency]="skill.proficiency"
+                                    [level]="skill.level ?? ''">
+                                </app-tag-with-popover>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="skills">
                         <h4>Soft Skills</h4>
                         <ul class="skills-list">
-                            <li *ngFor="let softSkill of softSkills" class="skill-item">{{ translate(softSkill) }}</li>
+                            <li *ngFor="let skill of softSkills">
+                                <app-tag-with-popover 
+                                    [text]="translate(skill.name)"
+                                    [icon]="skill.icon"
+                                    [proficiency]="skill.proficiency"
+                                    [level]="skill.level ?? ''">
+                                </app-tag-with-popover>
+                            </li>
                         </ul>
                     </div>
-
                 </div>
             </ng-container>
         </div>

@@ -32,8 +32,8 @@
   "allRightsReserved": "All rights reserved",
 
   "loading": "Loading profile...",
-  "frontEndDeveloper": "Front-End Developer",
-  "defaultBio": "I'm a passionate Front-End Developer with several years of experience in creating modern, responsive web applications. My expertise includes Angular, TypeScript, and DevExtreme.",
+  "frontEndDeveloper": "Front-End Developer Focused on Angular",
+  "defaultBio": "After 10 years of turning pots and pans, I traded the kitchen for Angular and, for over 4 years, I have been delivering robust SPAs with Angular+, JavaScript, TypeScript, CSS and HTML, Docker & CI/CD — performance and usability.",
   "codePhilosophy": "I focus on writing clean, maintainable code and creating intuitive user interfaces that provide excellent user experiences across all devices.",
   "downloadResume": "Download my resume",
   "forMoreDetails": "for more details",
@@ -65,5 +65,11 @@
   "emailMust": "Email must be a valid email address",
   "messageIsRequired": "Message is required",
   "messageMust": "Message must be at least 10 characters",
-  "subjectIsRequired": "Subject is required"
+  "subjectIsRequired": "Subject is required",
+
+  "proficiency": "Proficiency",
+  "basicLevel": "Basic",
+  "intermediateLevel": "Intermediate",
+  "advancedLevel": "Advanced",
+  "expertLevel": "Expert"
 }

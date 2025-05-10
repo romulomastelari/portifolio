@@ -3,6 +3,7 @@ import { provideRouter, withComponentInputBinding, withViewTransitions, withInMe
 import { provideHttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,6 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled'
       })
     ),
-    provideHttpClient()
+    provideHttpClient(), provideAnimationsAsync()
   ]
 };

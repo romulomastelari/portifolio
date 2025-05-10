@@ -131,26 +131,3 @@ h4 {
     justify-content: center;
   }
 }
-
-.skill-item {
-  background-color: var(--bg-color-secondary);
-  color: var(--primary-color);
-  padding: $spacing-sm $spacing-md;
-  border-radius: 20px;
-  font-size: $font-size-sm;
-  border: 1px solid var(--primary-color);
-
-  /* animações apenas para este elemento */
-  transition:
-          background-color 0.3s ease,
-          color 0.3s ease,
-          transform 0.2s ease;
-}
-
-/* efeito só no item que recebe o hover */
-.skill-item:hover {
-  background-color: var(--theme-secondary-color);
-  color: var(--theme-on-secondary-color);
-  transform: translateY(-2px);
-}
-

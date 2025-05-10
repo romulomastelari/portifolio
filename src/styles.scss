@@ -100,3 +100,6 @@ a {
     background-color: var(--primary-color-dark);
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

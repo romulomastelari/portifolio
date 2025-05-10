@@ -1,0 +1,22 @@
+<button
+        class="skill-tag"
+        [attr.data-proficiency]="getProficiencyValue() + '%'"
+        (mouseenter)="onMouseEnter()"
+        (mouseleave)="onMouseLeave()">
+    <fa-icon [icon]="icon" *ngIf="icon"></fa-icon>
+    <span>{{ text }}</span>
+</button>
+
+<div
+        class="skill-popover"
+        [class.show]="showPopover">
+    <div class="popover-content">
+        <h5 class="popover-title">{{ text }}</h5>
+        <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="getProficiencyValue()"></div>
+        </div>
+        <p class="proficiency-text">
+            {{ "proficiency" | translate }}: {{ getProficiencyValue() }}% ({{ getProficiencyLabel() }})
+        </p>
+    </div>
+</div>
