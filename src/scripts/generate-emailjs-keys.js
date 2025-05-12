@@ -18,7 +18,7 @@ const content = `export const EMAILJS_KEYS = {
 `;
 
 fs.writeFileSync(
-    path.resolve(__dirname, '../src/environments/emailjs-keys.ts'),
+    path.resolve(__dirname, '../environments/emailjs-keys.ts'),
     content
 );
 
