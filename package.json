@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "prebuild": "node scripts/generate-emailjs-keys.js",
+    "prebuild": "node ./src/scripts/generate-emailjs-keys.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
