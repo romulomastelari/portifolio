@@ -54,6 +54,7 @@
   "subject": "Subject",
   "sendMessage": "Send Message",
   "SendAsMessage": "Send me a message",
+  "sendingMessage": "Sending message...",
   "getInTouch": "Get in touch",
   "feelFree": "Feel free to reach out to me for any inquiries, project proposals, or just to say hello!",
   "phone": "Phone",
@@ -71,5 +72,7 @@
   "basicLevel": "Basic",
   "intermediateLevel": "Intermediate",
   "advancedLevel": "Advanced",
-  "expertLevel": "Expert"
+  "expertLevel": "Expert",
+
+  "failedEmailSend": "Failed to send message. Please try again later."
 }

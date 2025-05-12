@@ -1,15 +1,12 @@
-@import '../../../../styles/variables';
+@import 'src/styles/variables.scss';
 
 .skill-tag {
   background-color: var(--bg-color-secondary);
   color: var(--primary-color);
-  padding: clamp(0.25rem, 1vw, $spacing-sm) clamp(0.5rem, 2vw, $spacing-md);
   border-radius: 20px;
   font-size: clamp(0.75rem, 2vw, $font-size-sm);
   border: 1px solid var(--primary-color);
-  display: flex;
   align-items: center;
-  gap: 5px;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
@@ -21,6 +18,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--secondary);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+
 
   &:hover {
     background-color: var(--primary-color);
@@ -50,33 +55,37 @@
   z-index: $z-index-popover;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
   transition: 
     opacity 0.3s ease,
     transform 0.3s ease,
     visibility 0s linear 0.3s;
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
+  top: 100%;
+  margin-top: 5px;
+  transform: translateX(-50%);
   width: max-content;
-  max-width: 90vw;
+  max-width: 300px;
+  pointer-events: none;
 
   @media (max-width: 425px) {
     left: 0;
-    transform: translateY(10px);
-
-    &.show {
-      transform: translateY(0);
-    }
+    transform: translateX(0);
+    max-width: 250px;
   }
 
   &.show {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%);
     transition: 
       opacity 0.3s ease,
       transform 0.3s ease,
       visibility 0s linear 0s;
+    pointer-events: auto;
+
+    @media (max-width: 425px) {
+      transform: translateX(0);
+    }
   }
 }
 
@@ -160,6 +169,9 @@
 :host {
   position: relative;
   display: inline-block;
+  overflow: visible;
+  max-width: 100%;
+  vertical-align: top;
 }
 
 body.dark {

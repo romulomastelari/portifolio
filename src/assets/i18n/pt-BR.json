@@ -53,6 +53,7 @@
   "subject": "Assunto",
   "sendMessage": "Enviar mensagem",
   "SendAsMessage": "Enviar-me uma mensagem",
+  "sendingMessage": "Enviando mensagem...",
   "getInTouch": "Entre em contato",
   "feelFree": "Sinta-se à vontade para entrar em contato comigo para qualquer dúvida, proposta de projeto ou apenas para dizer olá!",
   "phone": "Telefone",
@@ -70,5 +71,7 @@
   "basicLevel": "Básico",
   "intermediateLevel": "Intermediário",
   "advancedLevel": "Avançado",
-  "expertLevel": "Especialista"
+  "expertLevel": "Especialista",
+
+  "failedEmailSend": "Falha ao enviar email"
 }

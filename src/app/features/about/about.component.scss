@@ -1,14 +1,25 @@
 @import '../../../styles/variables';
 
 .about-page {
-  header {
-    position: relative;
-    z-index: 1000;
-    padding: 0.75rem 1rem;
-  }
+  //header {
+  //  position: relative;
+  //  z-index: 1000;
+  //  padding: 0.75rem 1rem;
+  //}
+  //
+  //nav.open {
+  //  left: 0 !important;
+  //}
 
-  nav.open {
-    left: 0 !important;
+  .about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    @media (max-width: 320px) {
+      padding: 0 0.75rem;
+    }
   }
 
   .about-content {
@@ -147,7 +158,7 @@
 
   .skills {
     margin-top: $spacing-xl;
-    
+
     h4 {
       margin-bottom: $spacing-md;
     }

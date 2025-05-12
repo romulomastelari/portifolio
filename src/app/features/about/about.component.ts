@@ -20,12 +20,12 @@ import {
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {TranslatePipe} from "../../pipes/translate.pipe";
 import {MatTooltip} from "@angular/material/tooltip";
-import {TagWithPopoverComponent} from "../../shared/components/tag-with-popover/tag-with-popover.component";
+import {TagWithPopoverComponent} from "../../shared/tag-with-popover/tag-with-popover.component";
 
 @Component({
     selector: 'app-about',
     standalone: true,
-    imports: [CommonModule, FaIconComponent, TranslatePipe, TagWithPopoverComponent],
+    imports: [CommonModule, TranslatePipe, TagWithPopoverComponent],
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss']
 })

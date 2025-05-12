@@ -1,5 +1,5 @@
 <section class="contact section">
-    <div class="container">
+    <div class="contact-container">
         <h2 class="section-title">{{ 'ContactMe' | translate }}</h2>
 
         <div class="contact-content">
@@ -60,6 +60,16 @@
                 <div class="success-message" *ngIf="success">
                     <i class="material-icons">check_circle</i>
                     <p>{{ "yourMessageSent" | translate}}!</p>
+                </div>
+
+                <div class="error-message message-box" *ngIf="error">
+                    <i class="material-icons">error</i>
+                    <p>{{ errorMessage || ("messageSendError" | translate) }}</p>
+                </div>
+
+                <div class="loading-message" *ngIf="loading">
+                    <div class="spinner"></div>
+                    <p>{{ "sendingMessage" | translate }}...</p>
                 </div>
 
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>

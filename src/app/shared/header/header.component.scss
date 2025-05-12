@@ -1,5 +1,11 @@
 @import '../../../styles/variables';
 
+:host header > .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -290,7 +296,7 @@ app-logo {
     width: 100%;
     height: 100vh;
     background-color: var(--bg-color);
-    z-index: 999;
+    z-index: 1000;
     flex-direction: column;
     padding: 1rem;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -300,7 +306,7 @@ app-logo {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 
     &.open {
-      left: 0;
+      left: 0 !important;
       transform: translateX(0);
     }
 

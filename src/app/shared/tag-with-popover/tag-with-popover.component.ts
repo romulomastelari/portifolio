@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { TranslatePipe } from "../../../pipes/translate.pipe";
+import { TranslatePipe } from "../../pipes/translate.pipe";
 
 @Component({
   selector: 'app-tag-with-popover',

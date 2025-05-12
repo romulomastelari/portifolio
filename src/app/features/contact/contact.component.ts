@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TranslatePipe} from "../../pipes/translate.pipe";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faGithub, faInstagram, faLinkedin, faWhatsapp} from "@fortawesome/free-brands-svg-icons";
+import emailjs from '@emailjs/browser';
+import {EMAILJS_KEYS} from "../../../environments/emailjs-keys";
 
 @Component({
     selector: 'app-contact',
@@ -12,10 +14,13 @@ import {faGithub, faInstagram, faLinkedin, faWhatsapp} from "@fortawesome/free-b
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
     contactForm: FormGroup;
     submitted = false;
     success = false;
+    error = false;
+    loading = false;
+    errorMessage = '';
 
     protected readonly faGithub = faGithub;
     protected readonly faInstagram = faInstagram;
@@ -33,18 +38,40 @@ export class ContactComponent {
         });
     }
 
+    ngOnInit(): void {
+        emailjs.init(EMAILJS_KEYS.publicKey);
+    }
+
     onSubmit() {
         this.submitted = true;
+        this.error = false;
+        this.success = false;
+        this.errorMessage = '';
 
         if (this.contactForm.valid) {
-            console.log( this.contactForm.value);
-            this.success = true;
-            this.contactForm.reset();
-            this.submitted = false;
+            this.loading = true;
 
-            setTimeout(() => {
-                this.success = false;
-            }, 5000);
+            emailjs.send(
+                EMAILJS_KEYS.serviceId,
+                EMAILJS_KEYS.templateId,
+                this.contactForm.value
+            )
+                .then((response) => {
+                    this.success = true;
+                    this.loading = false;
+                    this.contactForm.reset();
+                    this.submitted = false;
+
+                    setTimeout(() => {
+                        this.success = false;
+                    }, 5000);
+                })
+                .catch((err) => {
+                    console.error('FALHOUUUU...', err);
+                    this.error = true;
+                    this.loading = false;
+                    this.errorMessage = err.text || 'Failed to send message. Please try again later.';
+                });
         }
     }
 

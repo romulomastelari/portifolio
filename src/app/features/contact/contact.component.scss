@@ -1,5 +1,20 @@
 @import '../../../styles/variables';
 
+.contact-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0 0.75rem;
+  }
+}
+
 .contact-content {
   display: flex;
   gap: $spacing-xl;

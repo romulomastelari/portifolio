@@ -119,6 +119,31 @@ O projeto segue uma arquitetura modular com componentes standalone do Angular 17
 - A estrutura de componentes permite fácil extensão para novas seções ou funcionalidades.
 - O sistema de tradução pode ser expandido adicionando novos idiomas no serviço de linguagem.
 
+### Configuração do EmailJS
+
+O formulário de contato utiliza [EmailJS](https://www.emailjs.com/) para enviar emails diretamente do frontend sem a necessidade de um backend. Para configurar:
+
+1. Crie uma conta no [EmailJS](https://www.emailjs.com/)
+2. Crie um serviço de email (Gmail, Outlook, etc.)
+3. Crie um template de email
+4. Configure as credenciais:
+
+   Para desenvolvimento local, crie um arquivo `src/environments/emailjs-keys.ts` com:
+   ```typescript
+   export const EMAILJS_KEYS = {
+     serviceId: 'seu_service_id',
+     templateId: 'seu_template_id',
+     publicKey: 'sua_public_key'
+   };
+   ```
+
+   Para produção (CI/CD), configure os seguintes secrets no GitHub:
+   - `EMAILJS_SERVICE_ID`: Seu ID de serviço do EmailJS
+   - `EMAILJS_TEMPLATE_ID`: Seu ID de template do EmailJS
+   - `EMAILJS_PUBLIC_KEY`: Sua chave pública do EmailJS
+
+   O workflow de CI/CD irá gerar automaticamente o arquivo de configuração durante o build.
+
 ---
 
 <p align="center">

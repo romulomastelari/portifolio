@@ -40,7 +40,7 @@
                             <h4>{{ 'skills' | translate }}</h4>
                             <ul class="skills-list">
                                 <li *ngFor="let skill of skills">
-                                    <app-tag-with-popover 
+                                    <app-tag-with-popover
                                         [text]="skill.name"
                                         [icon]="skill.icon"
                                         [proficiency]="skill.proficiency"
@@ -54,7 +54,7 @@
                             <h4>Soft Skills</h4>
                             <ul class="skills-list">
                                 <li *ngFor="let skill of softSkills">
-                                    <app-tag-with-popover 
+                                    <app-tag-with-popover
                                         [text]="translate(skill.name)"
                                         [icon]="skill.icon"
                                         [proficiency]="skill.proficiency"
