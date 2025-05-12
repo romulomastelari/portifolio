@@ -1,28 +1,25 @@
-const fs   = require('fs');
+const fs = require('fs');
 const path = require('path');
 
-const {
-    EMAILJS_SERVICE_ID:  serviceId,
-    EMAILJS_TEMPLATE_ID: templateId,
-    EMAILJS_PUBLIC_KEY:  publicKey
-} = process.env;
+const serviceId  = process.env.EMAILJS_SERVICE_ID;
+const templateId = process.env.EMAILJS_TEMPLATE_ID;
+const publicKey  = process.env.EMAILJS_PUBLIC_KEY;
 
 if (!serviceId || !templateId || !publicKey) {
-    console.error('❌ Missing one of the EMAILJS_* env vars.');
+    console.error('❌ Variáveis EMAILJS_* não definidas');
     process.exit(1);
 }
 
-const outDir = path.resolve(__dirname, '../environments');
-if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir, { recursive: true });
-}
-
-const outFile = path.join(outDir, 'emailjs-keys.ts');
 const content = `export const EMAILJS_KEYS = {
   serviceId:  '${serviceId}',
   templateId: '${templateId}',
   publicKey:  '${publicKey}'
-};\n`;
+};
+`;
 
-fs.writeFileSync(outFile, content);
-console.log(`✅ Generated ${outFile}`);
+fs.writeFileSync(
+    path.resolve(__dirname, '../environments/emailjs-keys.ts'),
+    content
+);
+
+console.log('✅ emailjs-keys.ts gerado com sucesso');
