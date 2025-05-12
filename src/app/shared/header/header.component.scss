@@ -364,6 +364,16 @@ app-logo {
     color: var(--primary) !important;
   }
 
+  :host ::ng-deep .mobile-nav .nav-list .nav-item .theme-toggle,
+  :host ::ng-deep .mobile-nav .nav-list .nav-item .language-toggle {
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    width: 100%;
+  }
+
   .social-dropdown,
   .switchers-container {
     display: none;
