@@ -8,7 +8,9 @@ import {GitHubService} from '../../services/github.service';
 import {LanguageService} from '../../services/language.service';
 import {GitHubUser} from "../../models/interfaces/git/githubuser";
 import {faGithub, faInstagram, faLinkedin, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 
 @Component({
     selector: 'app-header',
@@ -35,11 +37,15 @@ export class HeaderComponent implements OnInit {
         }
     ];
 
+    faTimes = faTimes;
+
     constructor(
         private githubService: GitHubService,
-        private languageService: LanguageService
+        private languageService: LanguageService,
+        private library: FaIconLibrary
     ) {
         this.checkScreenSize();
+        this.library.addIcons(faTimes);
     }
 
     @HostListener('document:click', ['$event'])

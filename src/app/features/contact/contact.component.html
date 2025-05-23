@@ -19,7 +19,7 @@
                     <div class="contact-item">
                         <i class="material-icons">location_on</i>
                         <div>
-                            <h4>{{'location' | translate}}</h4>
+                            <h4>{{ 'location' | translate }}</h4>
                             <p>Bauru, São Paulo, Brazil</p>
                         </div>
                     </div>
@@ -40,7 +40,8 @@
                         <fa-icon [icon]="faInstagram"></fa-icon>
                         <span>Instagram</span>
                     </a>
-                    <a href="https://api.whatsapp.com/send/?phone=5514996571886&text=Ol%C3%A1%2C+como+vai%3F%0APodemos+conversar+um+pouco...&type=phone_number&app_absent=0" target="_blank" rel="noopener"
+                    <a href="https://api.whatsapp.com/send/?phone=5514996571886&text=Ol%C3%A1%2C+como+vai%3F%0APodemos+conversar+um+pouco...&type=phone_number&app_absent=0"
+                       target="_blank" rel="noopener"
                        aria-label="Whatsapp">
                         <fa-icon [icon]="faWhatsapp"></fa-icon>
                         <span>WhatsApp</span>
@@ -50,16 +51,16 @@
                 <div class="resume-download">
                     <a href="assets/Romulo_Mastelari_Curriculo.pdf" download class="btn">
                         <i class="material-icons">download</i>
-                        {{'downloadCV' | translate }}
+                        {{ 'downloadCV' | translate }}
                     </a>
                 </div>
             </div>
 
             <div class="contact-form">
-                <h3>{{'SendAsMessage' | translate}}</h3>
+                <h3>{{ 'SendAsMessage' | translate }}</h3>
                 <div class="success-message" *ngIf="success">
                     <i class="material-icons">check_circle</i>
-                    <p>{{ "yourMessageSent" | translate}}!</p>
+                    <p>{{ "yourMessageSent" | translate }}!</p>
                 </div>
 
                 <div class="error-message message-box" *ngIf="error">
@@ -82,13 +83,13 @@
                                 [class.invalid]="isFieldInvalid('name')"
                         >
                         <div class="error-message" *ngIf="isFieldInvalid('name')">
-                            <span *ngIf="contactForm.get('name')?.errors?.['required']">{{ 'nameIsRequired' | translate}}</span>
+                            <span *ngIf="contactForm.get('name')?.errors?.['required']">{{ 'nameIsRequired' | translate }}</span>
                             <span *ngIf="contactForm.get('name')?.errors?.['minlength']">{{ 'nameMust' | translate }}</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">{{ 'email' | translate}}</label>
+                        <label for="email">{{ 'email' | translate }}</label>
                         <input
                                 type="email"
                                 id="email"
@@ -128,7 +129,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn">{{'SendAsMessage' | translate}}</button>
+                    <button type="submit" class="btn">{{ 'SendAsMessage' | translate }}</button>
                 </form>
             </div>
         </div>

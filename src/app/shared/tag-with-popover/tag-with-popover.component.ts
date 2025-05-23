@@ -41,12 +41,25 @@ export class TagWithPopoverComponent implements OnInit {
     } else if (value >= 40) {
       return this.translatePipe.transform('basicLevel');
     } else {
-      return this.translatePipe.transform('basicLevel'); // Ajustei para basicLevel, já que não existe beginnerLevel
+      return this.translatePipe.transform('basicLevel');
     }
   }
 
   onMouseEnter(): void {
     this.showPopover = true;
+    setTimeout(() => {
+      const popover = document.querySelector('.skill-popover.show') as HTMLElement;
+      if (popover) {
+        const rect = popover.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        if (rect.right > viewportWidth) {
+          popover.style.left = 'auto';
+          popover.style.right = '0';
+          popover.style.transform = 'translateX(0)';
+        }
+      }
+    }, 0);
   }
 
   onMouseLeave(): void {

@@ -1,5 +1,21 @@
 @import 'src/styles/variables.scss';
 
+:host {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  max-width: 100%;
+  vertical-align: top;
+
+  @media (max-width: 768px) {
+    position: relative;
+  }
+
+  .skill-popover {
+    z-index: 99999;
+  }
+}
+
 .skill-tag {
   background-color: var(--bg-color-secondary);
   color: var(--primary-color);
@@ -8,10 +24,9 @@
   border: 1px solid var(--primary-color);
   align-items: center;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.2s ease;
+  transition: background-color 0.3s ease,
+  color 0.3s ease,
+  transform 0.2s ease;
   min-height: 32px;
   text-align: center;
   word-break: normal;
@@ -21,10 +36,9 @@
   display: inline-flex;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: var(--secondary);
+  background: var(--bg-color-secondary);
   white-space: nowrap;
   position: relative;
-  z-index: 1;
 
 
   &:hover {
@@ -52,45 +66,68 @@
 
 .skill-popover {
   position: absolute;
-  z-index: $z-index-popover;
+  z-index: 99999 !important;
   opacity: 0;
   visibility: hidden;
-  transition: 
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    visibility 0s linear 0.3s;
+  transition: opacity 0.3s ease,
+  transform 0.3s ease,
+  visibility 0s linear 0.3s;
   left: 50%;
   top: 100%;
   margin-top: 5px;
   transform: translateX(-50%);
   width: max-content;
   max-width: 300px;
-  pointer-events: none;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+
+  @media (max-width: 768px) {
+    max-width: 90vw;
+  }
 
   @media (max-width: 425px) {
     left: 0;
     transform: translateX(0);
-    max-width: 250px;
+    max-width: 90vw;
+    right: auto;
+  }
+
+  @media (max-width: 320px) {
+    max-width: 90vw;
   }
 
   &.show {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%);
-    transition: 
-      opacity 0.3s ease,
-      transform 0.3s ease,
-      visibility 0s linear 0s;
+    transform: translateX(-50%) translateZ(0);
+    transition: opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0s linear 0s;
     pointer-events: auto;
+    max-width: 90vw;
+    z-index: 99999 !important;
 
     @media (max-width: 425px) {
-      transform: translateX(0);
+      transform: translateX(0) translateZ(0);
+      max-width: 90vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &.show {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @media (max-width: 425px) {
+        transform: translateX(0) translateZ(0);
+      }
     }
   }
 }
 
 .popover-content {
-  background-color: var(--bg-color-secondary);
+  background-color: var(--bg-color-secondary) !important;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: $spacing-md;
@@ -100,10 +137,28 @@
   margin-top: 8px;
   max-height: 60vh;
   overflow-y: auto;
+  overflow-x: auto;
+  word-break: break-word;
+  position: relative;
+  z-index: 99999 !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  @media (max-width: 768px) {
+    min-width: 180px;
+    max-width: 100%;
+    word-break: break-word;
+  }
 
   @media (max-width: 425px) {
     min-width: 150px;
     padding: $spacing-sm;
+    max-height: 50vh;
+  }
+
+  @media (max-width: 320px) {
+    padding: $spacing-xs;
+    min-width: 120px;
   }
 
   .popover-title {
@@ -113,9 +168,14 @@
     font-weight: $font-weight-medium;
     opacity: 0;
     transform: translateY(5px);
-    transition: 
-      opacity 0.3s ease 0.1s,
-      transform 0.3s ease 0.1s;
+    transition: opacity 0.3s ease 0.1s,
+    transform 0.3s ease 0.1s;
+    word-break: break-word;
+
+    @media (max-width: 425px) {
+      font-size: $font-size-sm;
+      margin: 0 0 $spacing-xs;
+    }
 
     .show & {
       opacity: 1;
@@ -132,9 +192,17 @@
     opacity: 0;
     transform: scaleX(0.9);
     transform-origin: left;
-    transition: 
-      opacity 0.3s ease 0.2s,
-      transform 0.3s ease 0.2s;
+    transition: opacity 0.3s ease 0.2s,
+    transform 0.3s ease 0.2s;
+
+    @media (max-width: 425px) {
+      height: 6px;
+      margin-bottom: $spacing-xs;
+    }
+
+    @media (max-width: 320px) {
+      height: 5px;
+    }
 
     .show & {
       opacity: 1;
@@ -155,23 +223,23 @@
     margin: 0;
     opacity: 0;
     transform: translateY(5px);
-    transition: 
-      opacity 0.3s ease 0.3s,
-      transform 0.3s ease 0.3s;
+    transition: opacity 0.3s ease 0.3s,
+    transform 0.3s ease 0.3s;
+    word-break: break-word;
+
+    @media (max-width: 425px) {
+      font-size: calc($font-size-sm - 1px);
+    }
+
+    @media (max-width: 320px) {
+      font-size: calc($font-size-sm - 2px);
+    }
 
     .show & {
       opacity: 1;
       transform: translateY(0);
     }
   }
-}
-
-:host {
-  position: relative;
-  display: inline-block;
-  overflow: visible;
-  max-width: 100%;
-  vertical-align: top;
 }
 
 body.dark {

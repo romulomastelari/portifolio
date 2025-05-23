@@ -75,11 +75,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
         this.projectsService.getProjects().subscribe({
             next: (repos) => {
                 this.allProjects = repos;
-
                 this.extractLanguages();
-
                 this.filterProjects();
-
                 this.loading = false;
             },
             error: () => {

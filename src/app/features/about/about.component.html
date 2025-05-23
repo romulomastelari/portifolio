@@ -10,7 +10,7 @@
                 </div>
 
                 <ng-container *ngIf="!loading">
-                    <div class="about-image">
+                    <div class="about-image" @fadeIn>
                         <img
                                 src="assets/minha_img.jpg"
                                 alt="Meu Avatar"
@@ -19,52 +19,214 @@
                     </div>
 
                     <div class="about-text">
-                        <h3>{{ userProfile?.name || 'Rômulo Mastelari' }}</h3>
-                        <h4>{{ 'frontEndDeveloper' | translate }}</h4>
+                        <h3 @fadeIn>{{ 'Rômulo Mastelari' }}</h3>
+                        <h4 @fadeIn>{{ 'frontEndDeveloper' | translate }}</h4>
 
-                        <p *ngIf="userProfile?.bio">
-                            {{ userProfile?.bio }}
-                        </p>
+                        <div class="professional-summary" @fadeIn>
+                            <h4>Resumo Profissional</h4>
+                            <p>{{ professionalSummary }}</p>
+                        </div>
 
-                        <p *ngIf="!userProfile?.bio">
-                            {{ 'defaultBio' | translate }}
-                        </p>
+                        <div class="impact-metrics" @fadeIn>
+                            <ul class="metrics-list">
+                                <li *ngFor="let metric of impactMetrics; let i = index"
+                                    class="metric-item"
+                                    @cardAnimation>
+                                    <div class="metric-icon">
+                                        <fa-icon [icon]="metric.icon"></fa-icon>
+                                    </div>
+                                    <div class="metric-value">
+                                        <span class="value">{{ metric.prefix || '' }}{{ metric.value }}{{ metric.suffix || '' }}</span>
+                                        <span class="label">{{ metric.label }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-                        <p>
+                        <p @fadeIn>
                             {{ 'codePhilosophy' | translate }}
                             <a href="assets/Romulo_Mastelari_Curriculo.pdf" download
-                               class="cv-link">{{ 'downloadResume' | translate }}</a> {{ 'forMoreDetails' | translate }}.
+                               class="cv-link">{{ 'downloadResume' | translate }}</a> {{ 'forMoreDetails' | translate }}
+                            .
                         </p>
 
-                        <div class="skills">
-                            <h4>{{ 'skills' | translate }}</h4>
+                        <div class="skills" @fadeIn>
+                            <h4>Hard Skills</h4>
                             <ul class="skills-list">
-                                <li *ngFor="let skill of skills">
+                                <li *ngFor="let skill of skills; let i = index"
+                                    [style.animation-delay]="i * 0.1 + 's'">
                                     <app-tag-with-popover
-                                        [text]="skill.name"
-                                        [icon]="skill.icon"
-                                        [proficiency]="skill.proficiency"
-                                        [level]="skill.level ?? ''">
+                                            [text]="skill.name"
+                                            [icon]="skill.icon"
+                                            [proficiency]="skill.proficiency"
+                                            [level]="skill.level ?? ''">
                                     </app-tag-with-popover>
                                 </li>
                             </ul>
                         </div>
 
-                        <div class="skills">
+                        <div class="skills" @fadeIn>
                             <h4>Soft Skills</h4>
                             <ul class="skills-list">
-                                <li *ngFor="let skill of softSkills">
+                                <li *ngFor="let skill of softSkills; let i = index"
+                                    [style.animation-delay]="i * 0.1 + 's'">
                                     <app-tag-with-popover
-                                        [text]="translate(skill.name)"
-                                        [icon]="skill.icon"
-                                        [proficiency]="skill.proficiency"
-                                        [level]="skill.level ?? ''">
+                                            [text]="translate(skill.name)"
+                                            [icon]="skill.icon"
+                                            [proficiency]="skill.proficiency"
+                                            [level]="skill.level ?? ''">
                                     </app-tag-with-popover>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </ng-container>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-timeline section" @fadeIn>
+        <div class="container">
+            <h2 class="section-title">Trajetória Profissional</h2>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div *ngFor="let experience of careerExperiences; let i = index"
+                     class="timeline-item"
+                     [class.timeline-item-right]="i % 2 !== 0"
+                     @cardAnimation
+                     [style.animation-delay]="i * 0.3 + 's'">
+
+                    <div class="timeline-marker">
+                        <fa-icon [icon]="faBriefcase"></fa-icon>
+                    </div>
+
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <fa-icon [icon]="faCalendar"></fa-icon>
+                            <span>{{ experience.period }}</span>
+                        </div>
+
+                        <h3 class="timeline-title">{{ experience.role }}</h3>
+                        <h4 class="timeline-company">{{ experience.company }}</h4>
+
+                        <ul class="timeline-description">
+                            <li *ngFor="let item of experience.description">
+                                {{ item }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recommendations section" @fadeIn>
+        <div class="container">
+            <h2 class="section-title">Recomendações do LinkedIn</h2>
+
+            <div class="recommendations-carousel">
+                <button class="carousel-nav prev" (click)="previousRecommendation()" aria-label="Recomendação anterior">
+                    <fa-icon [icon]="faChevronLeft"></fa-icon>
+                </button>
+
+                <div class="recommendation-card" @cardAnimation>
+                    <div class="recommendation-header">
+                        <div class="quote-icon">
+                            <fa-icon [icon]="faQuoteLeft"></fa-icon>
+                        </div>
+                        <h3>{{ getCurrentRecommendation().name }}</h3>
+                        <p class="title">{{ getCurrentRecommendation().title }}</p>
+                        <p class="relationship">
+                            <fa-icon [icon]="faLinkedin"></fa-icon>
+                            {{ getCurrentRecommendation().relationship }}
+                        </p>
+                    </div>
+
+                    <div class="recommendation-body">
+                        <p>{{ getCurrentRecommendation().text }}</p>
+                    </div>
+
+                    <div class="recommendation-footer">
+                        <div class="quote-icon right">
+                            <fa-icon [icon]="faQuoteRight"></fa-icon>
+                        </div>
+                        <p class="date">{{ getCurrentRecommendation().date }}</p>
+                    </div>
+                </div>
+
+                <button class="carousel-nav next" (click)="nextRecommendation()" aria-label="Próxima recomendação">
+                    <fa-icon [icon]="faChevronRight"></fa-icon>
+                </button>
+            </div>
+
+            <div class="carousel-indicators">
+                <span *ngFor="let rec of recommendations; let i = index"
+                      class="indicator"
+                      [class.active]="currentRecommendationIndex() === i"
+                      (click)="currentRecommendationIndex.set(i)"
+                      tabindex="0"
+                      role="button"
+                      [attr.aria-label]="'Ver recomendação de ' + rec.name">
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section class="certifications section" @fadeIn>
+        <div class="container">
+            <h2 class="section-title">Certificações</h2>
+
+            <div class="certifications-grid">
+                <div *ngFor="let cert of certifications; let i = index"
+                     class="certification-card"
+                     @cardAnimation
+                     [style.animation-delay]="i * 0.2 + 's'">
+                    <div class="certification-icon">
+                        <fa-icon [icon]="faCertificate"></fa-icon>
+                    </div>
+                    <div class="certification-content">
+                        <h3>{{ cert.title }}</h3>
+                        <p class="issuer">{{ cert.issuer }}</p>
+                        <p class="date">{{ cert.date }}</p>
+                        <p *ngIf="cert.credentialId" class="credential">
+                            Credencial: {{ cert.credentialId }}
+                        </p>
+                        <div *ngIf="cert.skills && cert.skills.length > 0" class="cert-skills">
+                            <span *ngFor="let skill of cert.skills" class="cert-skill-tag">
+                                {{ skill }}
+                            </span>
+                        </div>
+                        <a *ngIf="cert.url"
+                           [href]="cert.url"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="credential-button">
+                            Exibir credencial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="personal-interests section" @fadeIn>
+        <div class="container">
+            <h2 class="section-title">Fora do Código</h2>
+            <p class="section-subtitle">Quem sou eu além do dev</p>
+
+            <div class="interests-grid">
+                <div *ngFor="let interest of personalInterests; let i = index"
+                     class="interest-card"
+                     @cardAnimation
+                     [style.animation-delay]="i * 0.15 + 's'">
+                    <div class="interest-icon">
+                        <fa-icon [icon]="interest.icon"></fa-icon>
+                    </div>
+                    <h3>{{ interest.name }}</h3>
+                    <p>{{ interest.description }}</p>
+                </div>
             </div>
         </div>
     </section>

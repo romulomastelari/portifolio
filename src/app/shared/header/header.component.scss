@@ -24,11 +24,19 @@
     padding: 0.75rem 1rem;
   }
 
+  @media (max-width: 768px) {
+    padding: 0.5rem 0.7rem;
+  }
+
+  @media (max-width: 425px) {
+    padding: 0.4rem 0.5rem;
+  }
+
   @media (max-width: 360px) {
-    padding: 0.5rem;
+    padding: 0.3rem;
 
     .header-content {
-      padding: 0.5rem;
+      padding: 0.3rem;
     }
 
     app-logo {
@@ -37,7 +45,15 @@
     }
 
     .menu-toggle {
-      padding: 0.5rem;
+      padding: 0.3rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 0.25rem;
+
+    .header-content {
+      padding: 0.25rem;
     }
   }
 }
@@ -50,6 +66,19 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 $spacing-md;
+
+  @media (max-width: 768px) {
+    padding: 0 $spacing-sm;
+  }
+
+  @media (max-width: 425px) {
+    padding: 0 $spacing-xs;
+    min-height: 36px;
+  }
+
+  @media (max-width: 320px) {
+    min-height: 32px;
+  }
 }
 
 app-logo {
@@ -197,7 +226,7 @@ app-logo {
         color: var(--primary-color);
       }
 
-      fa-icon{
+      fa-icon {
         margin-right: $spacing-sm;
         font-size: 18px;
       }
@@ -252,22 +281,16 @@ app-logo {
     background-color: white;
     border-radius: 3px;
     transition: all 0.3s ease;
+    margin-top: -12px;
   }
 
-  &.active {
-    span {
-      &:first-child {
-        transform: translateY(9px) rotate(45deg);
-      }
-
-      &:nth-child(2) {
-        opacity: 0;
-      }
-
-      &:last-child {
-        transform: translateY(-9px) rotate(-45deg);
-      }
-    }
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    border-radius: 1px;
+    transition: all 0.3s ease;
   }
 
   @media (max-width: 320px) {
@@ -304,6 +327,37 @@ app-logo {
     transform: translateX(-100%);
     opacity: 0.95;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+    .close-menu-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background-color: var(--primary-color-hover);
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 425px) {
+        width: 36px;
+        height: 36px;
+        top: 0.75rem;
+        right: 0.75rem;
+      }
+    }
 
     &.open {
       left: 0 !important;
@@ -377,5 +431,20 @@ app-logo {
   .social-dropdown,
   .switchers-container {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  app-logo {
+    margin-left: 5px;
+  }
+
+  .switchers-container, .social-dropdown {
+    margin-left: auto;
   }
 }

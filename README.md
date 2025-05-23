@@ -23,6 +23,7 @@ Um portfólio web moderno e responsivo construído com Angular 17.3, exibindo al
 Meu portfólio digital das minhas habilidades técnicas e projetos, permitindo que recrutadores e outros desenvolvedores conheçam meu trabalho de forma interativa.
 
 **Demo:** [https://romulomastelari.github.io/portfolio](https://romulomastelari.github.io/portfolio)
+**Url de acesso:** [https://romulomastelari.github.io/portfolio](https://romulomastelari.github.io/portfolio)
 
 ## 🧪 Tecnologias
 
@@ -147,8 +148,8 @@ O formulário de contato utiliza [EmailJS](https://www.emailjs.com/) para enviar
 ---
 
 <p align="center">
-  Feito com ❤️ por <a href="https://github.com/romulomastelari">Rômulo Mastelari</a>
+  <a href="https://github.com/romulomastelari">Rômulo Mastelari</a>
 </p>
 <p align="center">
-  "Transformando linhas de código em experiências memoráveis"
+  "📌 Só boraaaa! Sempre para frente :) 🚀🚀🚀"
 </p>

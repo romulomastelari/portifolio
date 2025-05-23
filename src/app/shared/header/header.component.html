@@ -1,8 +1,6 @@
 <header class="header">
     <div class="container">
         <div class="header-content">
-            <app-logo (click)="closeMenu()"></app-logo>
-
             <button
                     class="menu-toggle"
                     [class.active]="isMenuOpen"
@@ -14,6 +12,8 @@
                 <span></span>
                 <span></span>
             </button>
+
+            <app-logo (click)="closeMenu()"></app-logo>
 
             <nav class="nav" *ngIf="!isMobileView">
                 <ul class="nav-list">
@@ -45,6 +45,9 @@
             </nav>
 
             <nav class="nav mobile-nav" [class.open]="isMenuOpen" *ngIf="isMobileView">
+                <button class="close-menu-btn" (click)="closeMenu()" aria-label="Close menu">
+                    <fa-icon [icon]="faTimes"></fa-icon>
+                </button>
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a
