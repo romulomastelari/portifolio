@@ -29,3 +29,5 @@ yarn-error.log*
 
 src/environments/emailjs-keys.ts
 .github/workflows/
+
+.idea
